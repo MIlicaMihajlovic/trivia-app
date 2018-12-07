@@ -9,6 +9,7 @@ class ChuckService {
     getRandomJoke() {
         return this.client.getRandomJoke()
     }
+
 }
 
 export const chuckService = new ChuckService();

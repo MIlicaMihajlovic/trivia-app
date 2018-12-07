@@ -1,6 +1,7 @@
 <template>
     <div class="alert alert-primary" role="alert">
         <p>{{ randJoke }}</p>
+        <button @click="randJoke" type="button" class="btn btn-primary">See new joke</button>
     </div>
 </template>
 

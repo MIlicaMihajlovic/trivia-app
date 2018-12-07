@@ -4,7 +4,8 @@ import { chuckService } from '../service/ChuckService.js'
 
 export const chuckStore = {
     state: {
-        joke: ''
+        joke: '',
+        categories: []
     },
 
     actions: {
@@ -18,7 +19,9 @@ export const chuckStore = {
             } catch (error) {
                 console.log(error)
               }
-        }      
+        },
+        
+        
     },
 
     mutations: {
