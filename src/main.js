@@ -3,12 +3,14 @@ import App from './App.vue'
 import Vuex from 'vuex'
 
 import { router } from './router.js'
-import { chuckStore } from './chuckStore.js'
-import { triviaStore } from './triviaStore.js'
+import { chuckStore } from './store/chuckStore.js'
+import { triviaStore } from './store/triviaStore.js'
 
 Vue.config.productionTip = false
 
 Vue.use(Vuex)
+
+//u konstanti store smo dodali module
 
 const store = new Vuex.Store({
   modules: {
@@ -16,6 +18,8 @@ const store = new Vuex.Store({
     triviaStore
   }
 })
+
+//prosledili instanci Vue 
 
 new Vue({
   store,
