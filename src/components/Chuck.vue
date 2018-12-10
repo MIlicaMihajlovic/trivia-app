@@ -1,25 +1,53 @@
 <template>
     <div class="alert alert-primary" role="alert">
-        <p>{{ randJoke }}</p>
-        <button @click="randJoke" type="button" class="btn btn-primary">See new joke</button>
+        <p>{{ randjoke }}</p>
+        <form @submit.prevent="joke(jokeCategory)">
+           <div class="form-group">
+                <select v-model="jokeCategory" class="form-control">
+                <!-- <option selected>Choose</option> -->
+                <option v-for="category in categories" :key="category.id" >{{ category }}</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">See new joke</button>
+        </form>
     </div>
 </template>
 
 <script>
 
+import { mapActions, mapGetters  } from 'vuex'
 
 export default {
+
+    data() {
+        return {
+            jokeCategory: ''
+        }
+    },
+
     beforeRouteEnter(to,from,next) {
        next(vm => {
-           vm.$store.dispatch('joke')
+           vm.joke()
+           vm.jokeCategories()
        })
    },
    
    computed: {
-       randJoke() {
-           return this.$store.getters.randomJoke.value //ovde smo iz getera dovukli
-       }
+
+       ...mapGetters ({
+           randjoke: 'randomJoke',
+           categories: 'randomCategories'
+       }),
+
    },
+
+    methods: {
+        ...mapActions ([ 'joke', 'jokeCategories' ])
+    },
+
+
+
+
 }
 </script>
 

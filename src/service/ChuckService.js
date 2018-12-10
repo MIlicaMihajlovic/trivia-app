@@ -6,8 +6,12 @@ class ChuckService {
     }
 
     //
-    getRandomJoke() {
-        return this.client.getRandomJoke()
+    getRandomJoke(categ) {
+        return this.client.getRandomJoke(categ)
+    }
+
+    getRandomCategories() {
+        return this.client.getJokeCategories()
     }
 
 }
